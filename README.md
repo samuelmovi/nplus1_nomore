@@ -74,11 +74,8 @@ python manage.py migrate
 
 ```
 
-To create extra instances there's a management command:
+Model instances can be created using the custom management commands provided, or by loading the included fixtures.
 
-```bash
-python manage.py create_example_1_data 100
-```
 
 ## Examples
 
