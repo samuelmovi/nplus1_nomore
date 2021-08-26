@@ -1,0 +1,60 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+{% block content %}
+<h3>Django N+1 No More!!</h3>
+<h5>DjangoRESTFramework</h5>
+<p>In these examples we explore the different sources of N+1 issuses when developing over DjangoRESTFramework
+    <br>
+    We are using three models: Grandparent, Parent and Child.
+    Parent is linked to Grandparent by FK.
+    Child is linked to, both, Parent and Grandparent by FK.
+</p>
+
+<p>Breakdown of the examples:</p>
+
+<div class="card">
+    <p><b>Grandparents</b>: Optimizing Serializer, with equivalent View</p>
+    <blockquote>
+        List Grandparents, but include all children (Parent) and children of children.
+    </blockquote>
+    <ul>
+        <li>
+            <a href="http://127.0.0.1:8000/rest/api/grandparent-list-bad/" target="_blank">BAD</a>
+        </li>
+        <li>
+            <a href="http://127.0.0.1:8000/rest/api/grandparent-list-good/" target="_blank">GOOD</a>
+        </li>
+    </ul>
+</div>
+<div class="card">
+    <p><b>Parents</b>: Custom Queryset and Serializer Optimizations</p>
+    <blockquote>
+        List Parents, and include information about their children, and their related models
+    </blockquote>
+    <ul>
+        <li>
+            <a href="http://127.0.0.1:8000/rest/api/parent-list-worst/" target="_blank">WORST</a>
+        </li>
+        <li>
+            <a href="http://127.0.0.1:8000/rest/api/parent-list-bad/" target="_blank">BAD</a>
+        </li>
+        <li>
+            <a href="http://127.0.0.1:8000/rest/api/parent-list-good/" target="_blank">GOOD</a>
+        </li>
+    </ul>
+</div>
+<div class="card">
+    <p><b>Children</b>: Same Serializer, Optimized Queryset</p>
+    <blockquote>
+        List Children, and load all related models.
+    </blockquote>
+    <ul>
+        <li>
+            <a href="http://127.0.0.1:8000/rest/api/child-list-bad/" target="_blank">BAD</a>
+        </li>
+        <li>
+            <a href="http://127.0.0.1:8000/rest/api/child-list-good/" target="_blank">GOOD</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}

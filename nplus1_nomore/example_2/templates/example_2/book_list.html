@@ -1,0 +1,34 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+{% block content %}
+<div class="card">
+    <b>Model Instances</b>
+    <ul>
+        <li>Book: {{ book_count }}</li>
+        <li>Author: {{ author_count }}</li>
+    </ul>
+</div>
+
+<div class="card">
+    <b>Explanation:</b>
+     {% autoescape off %}
+     <p>{{explanation}}</p> 
+     {% endautoescape %}
+ </div>
+
+ <table>
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Country</th>
+    </tr>
+{% for book in books %}
+    <tr>
+        <td>{{ book.title }}</td>
+        <td>{{ book.author.name }}</td>
+        <td>{{ book.author.country.name }}</td>
+    </tr>
+{% endfor %}
+</table>
+
+{% endblock %}

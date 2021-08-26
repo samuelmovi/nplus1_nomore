@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+{% block content %}
+<div class="card">
+    <b>Model Instances</b>
+    <ul>
+        <li>Report: {{ report_count }}</li>
+        <li>Expense: {{ expense_count }}</li>
+    </ul>
+</div>
+
+<div class="card">
+    <b>Explanation:</b>
+     {% autoescape off %}
+     <p>{{explanation}}</p> 
+     {% endautoescape %}
+ </div>
+
+{% for report in reports %}
+<div>
+    <h4>Name {{ report.name }}</h2>
+        <p><b>Expenses:</b>
+            {% for expense in report.expenses.all %}
+                {{ expense.amount }}
+            {% endfor %}
+        </p>
+    <small><b>Total</b>: {{ report.get_expense_total }}</small>
+</div>
+{% endfor %}
+{% endblock %}

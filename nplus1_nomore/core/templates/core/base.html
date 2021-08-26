@@ -1,0 +1,30 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Django N+1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/nplusone.css' %}">
+    {% block head %}
+    {% endblock %}
+  </head>
+  <body>
+    <nav>
+        <ul>
+            <li><a href="/"><b>N+1 No More</b></a></li>
+            <li><a href="/views_templates/" target="_blank">Views + Templates</a></li>
+            <li><a href="/rest/" target="_blank">REST</a></li>
+            <li><a href="/graphql/" target="_blank">GraphQL</a></li>
+            <li><a href="/profiling/" target="_blank">Profiling</a></li>
+            </li>
+        </ul>
+    </nav>
+    <div class="main">
+        <!-- Begin Page Content -->
+      {% block content %}
+      {% endblock %}
+    </div>
+  </body>
+</html>

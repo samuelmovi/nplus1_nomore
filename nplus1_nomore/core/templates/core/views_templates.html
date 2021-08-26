@@ -1,0 +1,74 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+{% block content %}
+<h3>Django N+1 No More!!</h3>
+<h5>Views & Templates</h5>
+<p>In these examples we explore the use of Django's own Views and templates, as it pertains to N+1 issuses</p>
+
+<p>Breakdown of the examples:</p>
+
+<div class="card">
+    <p><b>Example 0</b>: Direct FK relationship</p>
+    <blockquote>
+        We have 2 models, one linked to another by ForeignKeyField.<br>
+        This is the simplest version of the N+1 issue.
+    </blockquote>
+    <ul>
+        <li>
+            <a href="{% url 'example_0:people-bad'%}" target="_blank">BAD</a>
+        </li>
+        <li>
+            <a href="{% url 'example_0:people-good'%}" target="_blank">GOOD</a>
+        </li>
+    </ul>
+</div>
+<div class="card">
+    <p><b>Example 1</b>: Reverse FK relationship</p>
+    <blockquote>
+        We have 2 models, linked by ForeignKeyField, but we access them from the linked-to instance.<br>
+    </blockquote>
+    <ul>
+        <li>
+            <a href="{% url 'example_1:reports-bad'%}" target="_blank">BAD</a>
+        </li>
+        <li>
+            <a href="{% url 'example_1:reports-good'%}" target="_blank">GOOD</a>
+        </li>
+        <li>
+            <a href="{% url 'example_1:reports-best'%}" target="_blank">BEST</a>
+        </li>
+    </ul>
+</div>
+<div class="card">
+    <p><b>Example 2</b>: Nested FK relationship (2N+1)</p>
+    <blockquote>
+        Similar to Example 0, but we have another level of ForeignKey nesting, which aggravates the whole N+1 issue.<br>
+    </blockquote>
+    <ul>
+        <li>
+            <a href="{% url 'example_2:books-bad'%}" target="_blank">BAD</a>
+        </li>
+        <li>
+            <a href="{% url 'example_2:books-good'%}" target="_blank">GOOD</a>
+        </li>
+    </ul>
+</div>
+<div class="card">
+    <p><b>Example 3</b>: Many2Many relationship</p>
+    <blockquote>
+        Here we play with the N+1 issue as it relates to instances related by ManyToManyField.<br>
+    </blockquote>
+    <ul>
+        <li>
+            <a href="{% url 'example_3:reports-bad'%}" target="_blank">BAD</a>
+        </li>
+        <li>
+            <a href="{% url 'example_3:reports-good'%}" target="_blank">GOOD</a>
+        </li>
+        <li>
+            <a href="{% url 'example_3:reports-best'%}" target="_blank">BEST</a>
+        </li>
+    </ul>
+</div>
+<ul>
+{% endblock %}

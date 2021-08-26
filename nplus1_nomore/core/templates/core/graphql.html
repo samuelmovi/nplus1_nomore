@@ -1,0 +1,39 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+{% block content %}
+<h3>Django N+1 No More!!</h3>
+<h5>GraphQL</h5>
+<p>In these examples we explore the different sources of N+1 issuses when using GRaphQL with graphene-django</p>
+
+<p>Breakdown of the examples:</p>
+
+<div class="card">
+    <p><b>Dataloaders Optimizations</b></p>
+    <blockquote>
+        List Parents, and include information about their children, and their related models
+    </blockquote>
+    <p>This example requires some code manipulation. <br>
+        After executing the following query, go to <code>nplus1_nomore.graph.schema.Query</code> and switch the lines defining <code>articles</code>
+       You can see warning by <code>nplusone</code> in your logging</p>
+    <blockquote>
+        query {
+            articles {
+              edges {
+                node {
+                  title
+                  body
+                  comments {
+                    text
+                  }
+                }
+              }
+            }
+          }
+    </blockquote>
+    <ul>
+        <li>
+            <a href="/graphql_endpoint/" target="_blank">Endpoint</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}

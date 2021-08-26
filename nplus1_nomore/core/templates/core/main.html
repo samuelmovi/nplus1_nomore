@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+{% block content %}
+<h3>Django N+1 No More!!</h3>
+<p>This is a collection of diverse cases of N+1 when developing within the Django ecosystem.<br>We cover examples using:</p>
+<ul>
+    <li>Django View and Templates</li>
+    <li>Django REST Framework</li>
+    <li>GraphQL</li>
+</ul>
+<p>Breakdown of the examples:</p>
+
+<ul>
+    <li>Example 0: Direct FK relationship</li>
+    <li>Example 1: Reverse FK relationship</li>
+    <li>Example 2: Nested FK relationship (2N+1)</li>
+    <li>Example 3: Many2Many relationship</li>
+    <li>REST API: Viewsets and Serializers</li>
+    <li>GraphQL: Direct FK relationship</li>
+    <li>3rd Party: example usage of profiling modules</li>
+
+</ul>
+{% endblock %}

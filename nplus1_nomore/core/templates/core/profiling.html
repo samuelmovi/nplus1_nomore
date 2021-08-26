@@ -1,0 +1,41 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+{% block content %}
+<h3>Django N+1 No More!!</h3>
+<h5>Profiling</h5>
+<p>
+Here, I've collected examples of different profiling tools available in the Django ecosystem.<br>
+These can be used to explore <code>N+1</code> as well as other kinds of bottlenecks on your Django web application.<br>
+They will need activation at the SETTINGS level.
+</p>
+
+
+<div class="card">
+    <p><b>Silk</b></p>
+    <blockquote>
+        Silk intercepts and stores HTTP requests and database queries before presenting them in a user interface for further inspection
+    </blockquote>
+    <a href="/silk/" target="_blank">Silk reports</a>
+</div>
+<div class="card">
+    <p><b>Postgrest Metrics</b></p>
+    <blockquote>
+        A Django application that exposes a bunch of PostgreSQL database metrics
+    </blockquote>
+    <a href="/admin/postgres-metrics/" target="_blank">Postgres Metrics</a>
+</div>
+<div class="card">
+    <p><b>Health Checks</b></p>
+    <blockquote>
+        Checks for various conditions and provides reports when anomalous behavior is detected.
+    </blockquote>
+    <a href="/health/" target="_blank">Health Check</a>
+</div>
+<div class="card">
+    <p><b>Auto-Prefetching</b></p>
+    <blockquote>
+        Automatically prefetch foreign key values as needed.
+    </blockquote>
+    <a href="/autopre/" target="_blank">Auto Prefetch</a>
+</div>
+{% endblock %}
