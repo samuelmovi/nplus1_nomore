@@ -1,18 +1,18 @@
-# Django N + 1
+# Django N+1 No More!!!
 
-`N+1` is the common way to reference a database performance issue that Django is susceptible to, when using certain database calls in certain ways.
+This project aims to be an exhaustive collection of examples of theses mistakes, as many as possible, and also of the solution(s) to these performance loses caused by `N+1` issues.
 
-This repository aims to be a collection of examples of theses mistakes, as many as possible, and also of the solution(s) to those performance loses.
+`N+1` is the common way to reference a database performance issue that Django is susceptible to, when using certain database calls, in certain ways.
 
-For convenience of testing, a basic Django project named `n_plus_one` is available.
+For convenience of poking and proding, a basic Django project named `nplus1_nomore` is available.
 
-Each app will focus on one given type of problem, group of problems or alternative solutions.
+Each app focuses on one given type of problem, group of problems or alternative solutions.
 
-Some apps will illustrate the use of tools to find these problems
 
 ## Table of Contents
 
 - [Requirements](#requirements)
+- [Resources](#resources)
 - [Project Setup](#project-setup)
 - [Examples](#examples)
   - [Example 0](#example-0)
@@ -37,9 +37,27 @@ Some apps will illustrate the use of tools to find these problems
 
 - Python 3.6
 - Django 2.2
-- Docker (for Postgres server instance)
 
-To install the required Python modules: `pip install -r requirements.txt`
+Optional:
+
+- Docker (for use with Postgres metrics module)
+
+To install the required Python modules: 
+```bash
+pip install -r requirements.txt
+```
+
+
+## Resources
+
+I have used a number of online resources when researching this topic.
+Here are some of them:
+
+- [https://blog.sentry.io/2020/09/14/finding-and-fixing-django-n-1-problems]()
+- [https://scoutapm.com/blog/django-and-the-n1-queries-problem]()
+- [https://www.valentinog.com/blog/n-plus-one/]()
+- [https://apirobot.me/posts/django-graphql-solving-n-1-problem-using-dataloaders]()
+
 
 ## Project Setup
 
@@ -71,8 +89,15 @@ Collection of examples of different ways in which the N+1 problem can arise in D
 
 `N+1` by direct `ForeingKey` relationship.
 
-To create extra instances for this app, execute: `python manage.py create_example_0_data $INT`
-To load the data fixture: `python manage.py loaddata --app example_0 example_0_dump.json`
+To create extra instances for this app, execute: 
+```bash
+python manage.py create_example_0_data $INT
+```
+
+To load the data fixture: 
+```bash
+python manage.py loaddata --app example_0 example_0_dump.json
+```
 
 
 ### Example 1
@@ -81,8 +106,14 @@ To load the data fixture: `python manage.py loaddata --app example_0 example_0_d
 
 This is an implementation of the example used on [this](https://blog.sentry.io/2020/09/14/finding-and-fixing-django-n-1-problems) very good explanation of the `n+1` issue in Django. 
 
-To create extra instances for this app, execute: `python manage.py create_example_1_data $INT`
-To load the data fixture: `python manage.py loaddata --app example_1 example_1_dump.json`
+To create extra instances for this app, execute: 
+```bash
+python manage.py create_example_1_data $INT
+```
+To load the data fixture: 
+```bash
+python manage.py loaddata --app example_1 example_1_dump.json
+```
 
 In this example we explore:
 
@@ -96,24 +127,42 @@ In this example we explore:
 
 Inspired by the `2N+1` explanation on [https://scoutapm.com/blog/django-and-the-n1-queries-problem]()
 
-To create extra instances for this app, execute: `python manage.py create_example_2_data $INT`
-To load the data fixture: `python manage.py loaddata --app example_2 example_2_dump.json`
+To create extra instances for this app, execute: 
+```bash
+python manage.py create_example_2_data $INT
+```
+To load the data fixture: 
+```bash
+python manage.py loaddata --app example_2 example_2_dump.json
+```
 
 
 ### Example 3
 
 Exploration of N+1 issues when using `ManyToManyField` in your models.
 
-To create extra instances for this app, execute: `python manage.py create_example_3_data $INT`
-To load the data fixture: `python manage.py loaddata --app example_3 example_3_dump.json`
+To create extra instances for this app, execute: 
+```bash
+python manage.py create_example_3_data $INT
+```
+To load the data fixture: 
+```bash
+python manage.py loaddata --app example_3 example_3_dump.json
+```
 
 
 ### REST
 
 In this case we explore the N+1 issues when developing REST endpoints with `DjangoRESTFramework`
 
-To create extra instances for this app, execute: `python manage.py create_rest_data $INT`
-To load the data fixture: `python manage.py loaddata --app rest rest_dump.json`
+To create extra instances for this app, execute: 
+```bash
+python manage.py create_rest_data $INT
+```
+To load the data fixture: 
+```bash
+python manage.py loaddata --app rest rest_dump.json
+```
 
 
 ### GraphQL
