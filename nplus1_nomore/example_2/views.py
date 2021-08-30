@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views import View
 
+# from silk.profiling.profiler import silk_profile
+
 from .models import Author, Book
 # Create your views here.
 

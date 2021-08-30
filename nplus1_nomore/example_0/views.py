@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views import View
 
+# from silk.profiling.profiler import silk_profile
+
 from .models import Country, Person
 # Create your views here.
 
@@ -9,7 +11,7 @@ class PersonListBadView(View):
     model = Person
     template_name = 'example_0/person_list.html'
 
-    # @silk_profile(name='Bad Report List')
+    # @silk_profile(name='Bad Person List')
     def get(self, request, **kwargs):
         context = {
             'people_count': self.model.objects.count(),
@@ -25,7 +27,7 @@ class PersonListGoodView(View):
     model = Person
     template_name = 'example_0/person_list.html'
 
-    # @silk_profile(name='Bad Report List')
+    # @silk_profile(name='Good Person List')
     def get(self, request, **kwargs):
         context = {
             'people_count': self.model.objects.count(),

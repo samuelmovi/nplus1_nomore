@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views import View
 
+# from silk.profiling.profiler import silk_profile
+
 from .models import Author, Book
 
 # Create your views here.
@@ -10,7 +12,7 @@ class BookListBadView(View):
     context_object_name = 'reports'
     template_name = 'example_2/book_list.html'
 
-    # @silk_profile(name='Bad Book List')
+    # @silk_profile(name='Autoprefetched Bad Book List')
     def get(self, request, **kwargs):
         context = {
             'book_count': self.model.objects.count(),
